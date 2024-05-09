@@ -97,16 +97,17 @@ Clicking on it will open a dialog box for users to send feedback.
 ```typescript
 import { OpenFeedbackModal } from '@parsifal-m/backstage-plugin-open-feedback';
 
-// Inside your Root component
-<Sidebar>
-  {/* Other SidebarItems */}
-  <SidebarItem
-    icon={ThumbUpAltIcon} // You do not have to use this icon, it can be any!
-    to="/open-feedback-modal"
-    text="OpenFeedbackModal"
-  />
-  {/* Other SidebarItems */}
-</Sidebar>;
+// Inside your Root.tsx
+export const Root = ({ children }: PropsWithChildren<{}>) => (
+  <SidebarPage>
+    <Sidebar>
+      <SidebarLogo />
+      <SidebarGroup label="Search" icon={<SearchIcon />} to="/search">
+        <SidebarSearchModal />
+      </SidebarGroup>
+      <OpenFeedbackModal /> // Add this line
+      <SidebarDivider />
+      // Other sidebar stuff
 ```
 
 ## Using the OpenFeedbackForm Component
